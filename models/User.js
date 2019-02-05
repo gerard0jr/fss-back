@@ -22,7 +22,11 @@ const userSchema = new Schema({
   active: {
     type: Boolean,
     default: true
-  }
+  },
+  leads: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Lead'
+  }]
 },{
   timestamps: {
     createdAt: true,
