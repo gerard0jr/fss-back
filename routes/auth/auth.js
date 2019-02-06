@@ -20,4 +20,11 @@ router.get('/logout', (req,res,next) => {
   req.logout()
   return res.status(200).json({message: 'Succesfully logged out'})
 })
+
+router.post('/updateUser/:id', (req,res,next) => {
+  const { id } = req.params
+  User.findByIdAndUpdate(id, {$set:req.body}, {new: true})
+  .then(user => res.status(201).json(user))
+  .catch(err => res.status(500).json(err))
+})
 module.exports = router

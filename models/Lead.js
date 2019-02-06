@@ -20,7 +20,10 @@ leadSchema = new Schema ({
   },
   interested: Boolean,
   meetingDate: Date,
-  comments: String
+  comments: {
+    postedBy: String,
+    date: Date
+  }
 },
 {
   timestamps: {
