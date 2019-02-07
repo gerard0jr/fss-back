@@ -23,9 +23,10 @@ leadSchema = new Schema ({
     default: false
   },
   meetingDate: Date,
-  comments: {
-    postedBy: String,
-    date: Date
+  commentPostedBy: String,
+  commentText: {
+    type: String,
+    default: 'Sin comentarios'
   }
 },
 {
