@@ -18,7 +18,10 @@ leadSchema = new Schema ({
     type: String,
     enum: ['Nacional', 'Extranjero']
   },
-  interested: Boolean,
+  interested: {
+    type:Boolean,
+    default: false
+  },
   meetingDate: Date,
   comments: {
     postedBy: String,
