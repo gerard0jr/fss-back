@@ -76,7 +76,7 @@ const auth = require('./routes/auth/auth')
 const leads = require('./routes/leads/leads')
 
 app.get('*', (req,res) => {
-  res.sendFile('/public/index.html')
+  res.sendFile(path.join(__dirname,'public', 'index.html'))
 })
 
 app.use('/auth', auth)
