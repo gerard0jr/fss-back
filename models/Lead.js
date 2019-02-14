@@ -18,16 +18,23 @@ leadSchema = new Schema ({
     type: String,
     enum: ['Nacional', 'Extranjero']
   },
-  interested: {
-    type:Boolean,
-    default: false
+  status: {
+    type: String,
+    enum: ['Propuesta', 'Negociación, Confirmación de pedido, Perdida, Primer Cobro'],
+    default: 'Propuesta'
   },
   meetingDate: Date,
-  commentPostedBy: String,
+  commentPostedBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   commentText: {
     type: String,
     default: 'Sin comentarios'
-  }
+  },
+  prefix: String,
+  seller: String,
+  number: Number
 },
 {
   timestamps: {
