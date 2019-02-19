@@ -43,4 +43,18 @@ router.post('/removeUserLead/:id', (req,res,next) => {
   .catch(err => res.status(500).json(err))
 })
 
+router.post('/file0Upload/:id', (req,res,next) => {
+  const { id } = req.params
+  Lead.findByIdAndUpdate(id, {$set: {fileURL0: req.body.link}}, {new: true})
+  .then(newLead => res.status(200).json(newLead))
+  .catch(err => res.status(500).json(err))
+})
+
+router.post('/file1Upload/:id', (req,res,next) => {
+  const { id } = req.params
+  Lead.findByIdAndUpdate(id, {$set: {fileURL1: req.body.link}}, {new: true})
+  .then(newLead => res.status(200).json(newLead))
+  .catch(err => res.status(500).json(err))
+})
+
 module.exports = router

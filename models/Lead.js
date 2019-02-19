@@ -34,7 +34,9 @@ leadSchema = new Schema ({
   },
   prefix: String,
   seller: String,
-  number: Number
+  number: Number,
+  fileURL0: String,
+  fileURL1: String
 },
 {
   timestamps: {
