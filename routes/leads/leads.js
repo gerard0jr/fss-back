@@ -43,6 +43,8 @@ router.post('/removeUserLead/:id', (req,res,next) => {
   .catch(err => res.status(500).json(err))
 })
 
+// Manejo de archivos de LEADS
+
 router.post('/file0Upload/:id', (req,res,next) => {
   const { id } = req.params
   Lead.findByIdAndUpdate(id, {$set: {fileURL0: req.body.link}}, {new: true})
@@ -53,6 +55,20 @@ router.post('/file0Upload/:id', (req,res,next) => {
 router.post('/file1Upload/:id', (req,res,next) => {
   const { id } = req.params
   Lead.findByIdAndUpdate(id, {$set: {fileURL1: req.body.link}}, {new: true})
+  .then(newLead => res.status(200).json(newLead))
+  .catch(err => res.status(500).json(err))
+})
+
+router.get('/deleteFile0/:id', (req,res,next) => {
+  const { id } = req.params
+  Lead.findByIdAndUpdate(id, {$set: {fileURL0: null}}, { new: true })
+  .then(newLead => res.status(200).json(newLead))
+  .catch(err => res.status(500).json(err))
+})
+
+router.get('/deleteFile1/:id', (req,res,next) => {
+  const { id } = req.params
+  Lead.findByIdAndUpdate(id, {$set: {fileURL1: null}}, { new: true })
   .then(newLead => res.status(200).json(newLead))
   .catch(err => res.status(500).json(err))
 })
