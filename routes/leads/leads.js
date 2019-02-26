@@ -47,14 +47,14 @@ router.post('/removeUserLead/:id', (req,res,next) => {
 
 router.post('/file0Upload/:id', (req,res,next) => {
   const { id } = req.params
-  Lead.findByIdAndUpdate(id, {$set: {fileURL0: req.body.link}}, {new: true})
+  Lead.findByIdAndUpdate(id, {$set: {fileURL0: req.body.link.link, file0Name: req.body.name}}, {new: true})
   .then(newLead => res.status(200).json(newLead))
   .catch(err => res.status(500).json(err))
 })
 
 router.post('/file1Upload/:id', (req,res,next) => {
   const { id } = req.params
-  Lead.findByIdAndUpdate(id, {$set: {fileURL1: req.body.link}}, {new: true})
+  Lead.findByIdAndUpdate(id, {$set: {fileURL1: req.body.link.link, file1Name: req.body.name}}, {new: true})
   .then(newLead => res.status(200).json(newLead))
   .catch(err => res.status(500).json(err))
 })
