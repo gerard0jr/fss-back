@@ -74,9 +74,11 @@ app.locals.title = 'FSS Backend';
 const index = require('./routes/index');
 const auth = require('./routes/auth/auth')
 const leads = require('./routes/leads/leads')
+const general = require('./routes/general')
 
 app.use('/auth', auth)
 app.use('/leads', leads)
+app.use('/general', general)
 app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname,'public', 'index.html'))
 })
