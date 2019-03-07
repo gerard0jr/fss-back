@@ -75,10 +75,12 @@ const index = require('./routes/index');
 const auth = require('./routes/auth/auth')
 const leads = require('./routes/leads/leads')
 const general = require('./routes/general')
+const quotations = require('./routes/quotations')
 
 app.use('/auth', auth)
 app.use('/leads', leads)
 app.use('/general', general)
+app.use('/quotations', quotations)
 app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname,'public', 'index.html'))
 })

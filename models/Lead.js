@@ -38,7 +38,11 @@ leadSchema = new Schema ({
   fileURL0: String,
   file0Name: String,
   fileURL1: String,
-  file1Name: String
+  file1Name: String,
+  quotation: {
+    type: Schema.Types.ObjectId,
+    ref: 'Quotation'
+  }
 },
 {
   timestamps: {

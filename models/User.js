@@ -26,6 +26,10 @@ const userSchema = new Schema({
   leads: [{
     type: Schema.Types.ObjectId,
     ref: 'Lead'
+  }],
+  quotations: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Quotation'
   }]
 },{
   timestamps: {
