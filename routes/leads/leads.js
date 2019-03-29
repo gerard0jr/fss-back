@@ -4,7 +4,7 @@ const User = require('../../models/User')
 
 router.get('/getAll/:userId', (req,res,next) => {
   const { userId } = req.params
-  User.findById(userId).populate('leads')
+  User.findById(userId).populate({path:'leads', populate:{path:'clientName'}})
     .then( leads => {
       res.status(200).json(leads)
     })

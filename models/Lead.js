@@ -5,19 +5,14 @@ leadSchema = new Schema ({
     type: Boolean,
     default: true
   },
-  bussinessName: String,
-  bussinessRole: String,
-  bussinessEmployees: Number,
-  bussinessAddress: String,
+  clientName: {
+    type: Schema.Types.ObjectId,
+    ref: 'Client'
+  },
   contactName: String,
   contactPosition: String,
   contactPhone: String,
   contactEmail: String,
-  industry: String,
-  origin: {
-    type: String,
-    enum: ['Nacional', 'Extranjero']
-  },
   status: {
     type: String,
     enum: ['Propuesta', 'Negociación, Confirmación de pedido, Perdida, Primer Cobro'],
@@ -39,10 +34,10 @@ leadSchema = new Schema ({
   file0Name: String,
   fileURL1: String,
   file1Name: String,
-  quotation: {
+  quotations: [{
     type: Schema.Types.ObjectId,
     ref: 'Quotation'
-  }
+  }]
 },
 {
   timestamps: {

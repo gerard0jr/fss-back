@@ -60,13 +60,10 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
       
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
-
 
 // default value for title local
 app.locals.title = 'FSS Backend';
@@ -76,15 +73,15 @@ const auth = require('./routes/auth/auth')
 const leads = require('./routes/leads/leads')
 const general = require('./routes/general')
 const quotations = require('./routes/quotations')
+const clients = require('./routes/clients/clients')
 
 app.use('/auth', auth)
 app.use('/leads', leads)
 app.use('/general', general)
 app.use('/quotations', quotations)
+app.use('/clients', clients)
 app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname,'public', 'index.html'))
 })
-
-
 
 module.exports = app;

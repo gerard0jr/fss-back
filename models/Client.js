@@ -5,16 +5,18 @@ clientSchema = new Schema({
     type: Boolean,
     default: true
   },
-  clientName: {
+  bussinessName: {
     type: String,
     required: true
   },
-  clientAddress: String,
-  clientContact: String,
-  clientDate: Date,
-  folio: String,
-  reqType: String,
-
+  bussinessRole: String,
+  bussinessEmployees: Number,
+  bussinessAddress: String,
+  industry: String,
+  origin: {
+    type: String,
+    enum: ['Nacional', 'Extranjero']
+  }
 },
 {
   timestamps:{
@@ -23,3 +25,5 @@ clientSchema = new Schema({
   },
   versionKey: false
 })
+
+module.exports = require('mongoose').model('Client', clientSchema)

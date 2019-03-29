@@ -6,14 +6,16 @@ quotationSchema = new Schema({
     ref: 'User'
   },
   quotSeller: String,
-  quotPrefix: String,
+  quotPrefix: {
+    type: String,
+    default: 'COT'
+  },
   quotCity: String,
   quotNumber: Number,
-  quotDate: Date,
-  quotBussinessName: String,
-  quotBussinessAddr: String,
-  quotContactName: String,
-  quotCommentText: String
+  quotPO: String,
+  quotBill: String,
+  quotDescription: String,
+  quotAmount: Number
 },{
   timestamps: {
     createdAt: true,
