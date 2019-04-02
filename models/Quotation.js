@@ -5,6 +5,10 @@ quotationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  active: {
+    type: Boolean,
+    default: true
+  },
   quotSeller: String,
   quotPrefix: {
     type: String,

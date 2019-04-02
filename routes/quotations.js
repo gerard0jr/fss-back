@@ -21,6 +21,13 @@ router.post('/submitQuotation/:leadId', (req,res,next) => {
     .catch(err => res.status(500).send(err))
   })
 
+  router.post('/delQuot/:id', (req,res) => {
+    const { id } = req.params
+    Quotation.findByIdAndUpdate(id, {active: false}, {new: true})
+      .then(quot => res.status(200).send(quot))
+      .catch(err => res.status(500).send(err))
+  })
+
   router.post('/updateQuot/:id', (req,res,next) => {
     const { id } = req.params
     Quotation.findByIdAndUpdate(id, {$set: req.body}, {new:true})
