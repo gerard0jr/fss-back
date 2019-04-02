@@ -5,6 +5,7 @@ leadSchema = new Schema ({
     type: Boolean,
     default: true
   },
+  bussinessName: String,
   clientName: {
     type: Schema.Types.ObjectId,
     ref: 'Client'
