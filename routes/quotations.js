@@ -3,6 +3,7 @@ const Quotation = require('../models/Quotation')
 const Lead = require('../models/Lead')
 const User = require('../models/User')
 
+// Obtener todas las cotizaciones
 router.get('/getQuotations/:id', (req,res,next) => {
   const { id } = req.params
   Lead.findById(id).populate('quotations')
@@ -10,6 +11,7 @@ router.get('/getQuotations/:id', (req,res,next) => {
     .catch(err => res.status(500).send(err))
 })
 
+// Nueva cotización
 router.post('/submitQuotation/:leadId', (req,res,next) => {
   const { leadId } = req.params
   Quotation.create(req.body)
@@ -21,6 +23,7 @@ router.post('/submitQuotation/:leadId', (req,res,next) => {
     .catch(err => res.status(500).send(err))
   })
 
+  // Eliminar cotización
   router.post('/delQuot/:id', (req,res) => {
     const { id } = req.params
     Quotation.findByIdAndUpdate(id, {active: false}, {new: true})
@@ -28,6 +31,7 @@ router.post('/submitQuotation/:leadId', (req,res,next) => {
       .catch(err => res.status(500).send(err))
   })
 
+  // Actualizar cotización
   router.post('/updateQuot/:id', (req,res,next) => {
     const { id } = req.params
     Quotation.findByIdAndUpdate(id, {$set: req.body}, {new:true})

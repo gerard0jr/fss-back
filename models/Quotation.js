@@ -19,7 +19,9 @@ quotationSchema = new Schema({
   quotPO: String,
   quotBill: String,
   quotDescription: String,
-  quotAmount: Number
+  quotAmount: Number,
+  quotCounter: Number,
+  quotVersion: Number
 },{
   timestamps: {
     createdAt: true,

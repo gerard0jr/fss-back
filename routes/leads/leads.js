@@ -2,6 +2,7 @@ const router = require('express').Router()
 const Lead = require('../../models/Lead')
 const User = require('../../models/User')
 
+// Obtener todos los deals
 router.get('/getAll/:userId', (req,res,next) => {
   const { userId } = req.params
   User.findById(userId).populate({path:'leads', populate:{path:'clientName'}})
@@ -11,6 +12,7 @@ router.get('/getAll/:userId', (req,res,next) => {
     .catch( err => res.status(500).json(err))
 })
 
+// Agregar deal
 router.post('/newLead/:userId', (req,res,next) => {
   const { userId } = req.params
   Lead.create(req.body)
@@ -22,6 +24,7 @@ router.post('/newLead/:userId', (req,res,next) => {
   .catch( err => res.status(500).json(err))
 })
 
+// Actualizar deal
 router.post('/updateLead/:id', (req,res,next) => {
   const { id } = req.params
   Lead.findByIdAndUpdate(id, {$set: req.body}, {new:true})
@@ -29,6 +32,7 @@ router.post('/updateLead/:id', (req,res,next) => {
   .catch(err => res.status(500).json(err))
 })
 
+// Eliminar deal
 router.post('/removeLead/:id', (req,res,next) => {
   const { id } = req.params
   Lead.findByIdAndUpdate(id, {active: false}, {new: true})
@@ -36,6 +40,7 @@ router.post('/removeLead/:id', (req,res,next) => {
   .catch(err => res.status(500).json(err))
 })
 
+// Eliminar ID de deal del usuario
 router.post('/removeUserLead/:id', (req,res,next) => {
   const { id } = req.params
   User.findByIdAndUpdate(id, {$pull: {leads: req.body.id}}, {new: true})
@@ -43,7 +48,7 @@ router.post('/removeUserLead/:id', (req,res,next) => {
   .catch(err => res.status(500).json(err))
 })
 
-// Manejo de archivos de LEADS
+// Manejo de archivos de LEADS, crear y eliminar
 
 router.post('/file0Upload/:id', (req,res,next) => {
   const { id } = req.params

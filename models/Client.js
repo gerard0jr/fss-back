@@ -9,6 +9,7 @@ clientSchema = new Schema({
     type: String,
     required: true
   },
+  bussinessID: String,
   bussinessRole: String,
   bussinessEmployees: Number,
   bussinessAddress: String,
