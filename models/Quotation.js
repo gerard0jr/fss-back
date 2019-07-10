@@ -16,8 +16,6 @@ quotationSchema = new Schema({
   },
   quotCity: String,
   quotNumber: Number,
-  quotPO: String,
-  quotBill: String,
   quotDescription: String,
   quotAmount: Number,
   quotCounter: Number,

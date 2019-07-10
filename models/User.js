@@ -30,6 +30,14 @@ const userSchema = new Schema({
   quotations: [{
     type: Schema.Types.ObjectId,
     ref: 'Quotation'
+  }],
+  orders: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Order'
+  }],
+  bills: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Bill'
   }]
 },{
   timestamps: {
